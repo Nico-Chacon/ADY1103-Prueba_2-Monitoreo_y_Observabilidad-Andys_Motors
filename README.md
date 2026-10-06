@@ -18,6 +18,7 @@ despliegue de las EC2 App a subredes realmente privadas.
 
 ## Diagrama de la infraestructura
 ![Diagrama](media/wip.gif)
+
 Diagrama in progress
 ## Módulos incluidos
 
