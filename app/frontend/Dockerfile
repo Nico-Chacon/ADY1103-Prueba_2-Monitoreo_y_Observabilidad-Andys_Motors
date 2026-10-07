@@ -6,3 +6,7 @@ COPY js/ /usr/share/nginx/html/js/
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
+<<<<<<< HEAD
+=======
+# 2026 - Disenador asignatura: Ignacio A. Pastenet M.
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024

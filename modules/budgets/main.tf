@@ -1,6 +1,10 @@
 # ============================================================
 # AWS Budgets - Control financiero con alertas SNS
+<<<<<<< HEAD
 # andysmotors
+=======
+# chacon-freshbox - EP1 ARY1102
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # ============================================================
 
 resource "aws_budgets_budget" "monthly_total" {

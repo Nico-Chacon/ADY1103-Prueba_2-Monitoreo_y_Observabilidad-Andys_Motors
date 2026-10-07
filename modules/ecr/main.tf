@@ -1,4 +1,4 @@
-# ============================================================
+clear# ============================================================
 # ECR - Repositorios para las 6 imagenes Docker de AndysMotors
 # (frontend + get-vehicles + create-visit + create-contact + manage-visits + simulator)
 # ============================================================

@@ -7,17 +7,29 @@ variable "aws_region" {
 variable "project_name" {
   description = "Nombre del proyecto (prefijo de todos los recursos)"
   type        = string
+<<<<<<< HEAD
   default     = "andysmotors"
+=======
+  default     = "chacon-freshbox"
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 }
 
 variable "owner_name" {
   description = "Tu nombre/apellido (tag Owner)"
   type        = string
+<<<<<<< HEAD
   default     = "AndysMotors"
 }
 
 variable "vpc_cidr" {
   description = "CIDR de la VPC (segun caso AndysMotors: /22)"
+=======
+  default     = "Chacon"
+}
+
+variable "vpc_cidr" {
+  description = "CIDR de la VPC (segun caso FreshBox: /22)"
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   type        = string
   default     = "10.0.0.0/22"
 }
@@ -31,7 +43,11 @@ variable "ami_id" {
 variable "key_name" {
   description = "Nombre del Key Pair EC2 (crealo en la consola AWS antes del apply, opcional)"
   type        = string
+<<<<<<< HEAD
   default     = "andysmotors-key"
+=======
+  default     = "chacon-freshbox-key"
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 }
 
 variable "instance_type" {
@@ -56,7 +72,11 @@ variable "db_password" {
 variable "db_name" {
   description = "Nombre de la base de datos (debe coincidir con app/db/init.sql)"
   type        = string
+<<<<<<< HEAD
   default     = "andysmotors"
+=======
+  default     = "freshbox"
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 }
 
 variable "db_username" {
@@ -65,6 +85,7 @@ variable "db_username" {
   default     = "alumno"
 }
 
+<<<<<<< HEAD
 # ---- Observabilidad (EP2) ----
 variable "grafana_admin_password" {
   description = "Password del usuario admin de Grafana (pasar via TF_VAR_grafana_admin_password / secret; alfanumerico, min. 8 caracteres)"
@@ -83,6 +104,8 @@ variable "observability_allowed_cidr" {
   default     = "0.0.0.0/0"
 }
 
+=======
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # ---- Notificaciones / gobierno ----
 variable "email_sns" {
   description = "Correo para notificaciones SNS (Budgets + CloudWatch)"

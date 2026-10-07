@@ -1,13 +1,22 @@
 aws_region   = "us-east-1"
+<<<<<<< HEAD
 project_name = "andysmotors"
 owner_name   = "AndysMotors"
+=======
+project_name = "chacon-freshbox"
+owner_name   = "Chacon"
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 vpc_cidr     = "10.0.0.0/22"
 
 # Opcional: deja vacio para usar Amazon Linux 2023 ARM64 mas reciente
 ami_id = ""
 
 # Opcional: crea el Key Pair en la consola AWS si quieres SSH de respaldo
+<<<<<<< HEAD
 key_name = "andysmotors-key"
+=======
+key_name = "chacon-freshbox-key"
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 
 instance_type = "t4g.small"
 
@@ -16,6 +25,7 @@ db_root_password = "CambiaEstaPasswordRoot123!"
 db_password       = "CambiaEstaPasswordApp123!"
 
 # Deben coincidir con app/db/init.sql
+<<<<<<< HEAD
 db_name     = "andysmotors"
 db_username = "alumno"
 
@@ -23,6 +33,11 @@ db_username = "alumno"
 grafana_admin_password     = "CambiaEstaPasswordGrafana1"
 observability_allowed_cidr = "0.0.0.0/0" # recomendado: "TU_IP_PUBLICA/32"
 
+=======
+db_name     = "freshbox"
+db_username = "alumno"
+
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # Tu correo para notificaciones SNS (Budgets + CloudWatch)
 email_sns = "tu_correo@duocuc.cl"
 

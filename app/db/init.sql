@@ -1,4 +1,5 @@
 -- ============================================
+<<<<<<< HEAD
 -- AndysMotors - Base de Datos
 -- Comercializacion presencial de vehiculos nuevos y usados
 -- Tablas: vehiculos (catalogo/stock), visitas (agendamiento),
@@ -23,10 +24,28 @@ CREATE TABLE IF NOT EXISTS vehiculos (
     sucursal VARCHAR(60) NOT NULL,
     estado ENUM('disponible','reservado','vendido') NOT NULL DEFAULT 'disponible',
     descripcion TEXT,
+=======
+-- FreshBox SpA - Base de Datos (EP1)
+-- Evaluacion Parcial 1 - ARY1102
+-- ============================================
+
+CREATE DATABASE IF NOT EXISTS freshbox;
+USE freshbox;
+
+CREATE TABLE IF NOT EXISTS productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    categoria VARCHAR(100),
+    imagen_url VARCHAR(500),
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS visitas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     vehiculo_id INT NOT NULL,
@@ -65,3 +84,13 @@ INSERT INTO vehiculos (marca, modelo, anio, tipo, carroceria, combustible, trans
 -- Datos de ejemplo para que la consulta de visitas/contactos tenga contenido
 INSERT INTO visitas (vehiculo_id, nombre_cliente, email, telefono, sucursal, fecha_visita, estado) VALUES
 (1, 'Cliente Demo', 'demo@andysmotors.cl', '+56911111111', 'Las Condes', DATE_ADD(CURDATE(), INTERVAL 2 DAY) + INTERVAL 11 HOUR, 'agendada');
+=======
+INSERT INTO productos (nombre, descripcion, precio, stock, categoria) VALUES
+('Manzana organica 1kg', 'Manzanas rojas organicas, cultivo sin pesticidas, bolsa 1 kilogramo', 3490.00, 120, 'Frutas'),
+('Lechuga hidroponica', 'Lechuga fresca cultivada en sistema hidroponico, libre de tierra', 1990.00, 80, 'Verduras'),
+('Granola artesanal 500g', 'Granola con avena, miel, almendras y arandanos, sin azucar refinada', 4990.00, 60, 'Snacks'),
+('Jugo natural naranja 1L', 'Jugo 100% natural de naranja, sin preservantes ni colorantes', 2990.00, 100, 'Bebidas'),
+('Mix frutos secos 250g', 'Mezcla de almendras, nueces, castanas de caju y pasas organicas', 5490.00, 45, 'Snacks');
+
+-- 2026 - Disenador asignatura: Ignacio A. Pastenet M.
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024

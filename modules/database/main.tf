@@ -1,6 +1,10 @@
 # ============================================================
 # Database - Capa 3 Data: EC2 Amazon Linux + MySQL dedicado
+<<<<<<< HEAD
 # (segun tabla 2.3: "Servidor de base de
+=======
+# (segun tabla 2.3 del enunciado EP1: "Servidor de base de
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # datos dedicado", no RDS)
 # ============================================================
 

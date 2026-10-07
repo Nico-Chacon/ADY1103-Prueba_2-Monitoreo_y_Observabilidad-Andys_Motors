@@ -1,7 +1,11 @@
 # ============================================================
 # Security Groups segmentados por capa: ALB -> App -> Data
 # Minimo privilegio: cada capa solo acepta trafico de la capa
+<<<<<<< HEAD
 # inmediatamente anterior (segun tabla 2.4).
+=======
+# inmediatamente anterior (segun tabla 2.4 del enunciado EP1).
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # ============================================================
 
 resource "aws_security_group" "alb" {
@@ -56,6 +60,7 @@ resource "aws_security_group" "app" {
     cidr_blocks = [var.vpc_cidr]
   }
 
+<<<<<<< HEAD
   ingress {
     description     = "EP2: /metrics de los microservicios (3001-3004) solo desde la EC2 de observabilidad"
     from_port       = 3001
@@ -64,6 +69,8 @@ resource "aws_security_group" "app" {
     security_groups = [aws_security_group.obs.id]
   }
 
+=======
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   egress {
     from_port   = 0
     to_port     = 0
@@ -104,6 +111,7 @@ resource "aws_security_group" "db" {
 
   tags = merge(var.common_tags, { Name = "${var.project_name}-sg-db" })
 }
+<<<<<<< HEAD
 
 # ------------------------------------------------------------
 # EP2 - Observabilidad: Prometheus (9090) + Grafana (3000)
@@ -140,3 +148,5 @@ resource "aws_security_group" "obs" {
 
   tags = merge(var.common_tags, { Name = "${var.project_name}-sg-obs" })
 }
+=======
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024

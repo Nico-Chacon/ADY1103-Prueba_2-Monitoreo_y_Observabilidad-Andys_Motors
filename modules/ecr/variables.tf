@@ -8,11 +8,18 @@ variable "services" {
   type        = list(string)
   default = [
     "frontend",
+<<<<<<< HEAD
     "get-vehicles",
     "create-visit",
     "create-contact",
     "manage-visits",
     "simulator", # EP2: script simulador de transacciones (metricas para Prometheus)
+=======
+    "get-products",
+    "create-product",
+    "update-product",
+    "delete-product",
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   ]
 }
 

@@ -9,8 +9,11 @@ on:
       - '**/*.tfvars'
       - '**/.terraform.lock.hcl'
       - 'app/**'
+<<<<<<< HEAD
       - 'monitoring/**'
       - 'scripts/**'
+=======
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   workflow_dispatch:
 
 env:
@@ -18,9 +21,14 @@ env:
   TF_VAR_db_root_password:    ${{ secrets.DB_ROOT_PASSWORD }}
   TF_VAR_db_password:         ${{ secrets.DB_PASSWORD }}
   TF_VAR_owner_name:          ${{ secrets.OWNER_NAME }}
+<<<<<<< HEAD
   TF_VAR_grafana_admin_password: ${{ secrets.GRAFANA_ADMIN_PASSWORD }}
   TF_VAR_backup_iam_role_arn: ${{ secrets.BACKUP_IAM_ROLE_ARN }}
   PROJECT_NAME: andysmotors
+=======
+  TF_VAR_backup_iam_role_arn: ${{ secrets.BACKUP_IAM_ROLE_ARN }}
+  PROJECT_NAME: chacon-freshbox
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   AWS_REGION: us-east-1
 
 jobs:
@@ -56,7 +64,11 @@ jobs:
         continue-on-error: true
         run: terraform fmt -check -recursive
 
+<<<<<<< HEAD
       # 1) Crear primero solo los 6 repos ECR (necesarios para poder
+=======
+      # 1) Crear primero solo los 5 repos ECR (necesarios para poder
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
       #    hacer push de las imagenes antes del resto del apply)
       - name: Create ECR repositories
         working-directory: ./environments/dev
@@ -71,7 +83,17 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+<<<<<<< HEAD
       # 2) Build + push de las 6 imagenes (frontend + 4 microservicios + simulator EP2)
+=======
+      - name: Build & Push Docker Images
+        working-directory: ./app
+        run: |
+          chmod +x build-and-push.sh
+          ./build-and-push.sh
+          
+      # 2) Build + push de las 5 imagenes (frontend + 4 microservicios)
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
       - name: Build & Push Docker Images
         working-directory: ./app
         run: |
@@ -82,8 +104,12 @@ jobs:
         run: sleep 20
 
       # 3) Desplegar el resto: red, EC2 MySQL, ALB, ASG (App ya con
+<<<<<<< HEAD
       #    imagenes en ECR), EC2 observabilidad (Prometheus/Grafana),
       #    monitoreo CloudWatch, budgets, backup
+=======
+      #    imagenes en ECR), monitoreo, budgets, cloudtrail, backup
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
       - name: Terraform Plan
         working-directory: ./environments/dev
         run: terraform plan -input=false -out=tfplan
@@ -96,5 +122,9 @@ jobs:
 #        continue-on-error: true
 #        run: |
 #          aws autoscaling start-instance-refresh \
+<<<<<<< HEAD
 #            --auto-scaling-group-name andysmotors-asg \
+=======
+#            --auto-scaling-group-name chacon-freshbox-asg \
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 #            --preferences '{"MinHealthyPercentage":50,"InstanceWarmup":120}'

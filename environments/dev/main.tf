@@ -1,6 +1,11 @@
 # ============================================================
+<<<<<<< HEAD
 # andysmotors
 # Caso: AndysMotors - catalogo, stock, agendamiento de visitas y solicitud de contacto
+=======
+# chacon-freshbox — EP1 ARY1102 (Arquitectura Cloud)
+# Caso: FreshBox SpA - Catalogo Online de Productos Organicos
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # Arquitectura de 3 capas: Web (ALB) / App (EC2+Docker, ASG) / Data (EC2+MySQL)
 # ============================================================
 
@@ -9,7 +14,11 @@ locals {
     Project     = var.project_name
     Environment = "dev"
     Owner       = var.owner_name
+<<<<<<< HEAD
     CostCenter  = "andysmotors-automotriz"
+=======
+    CostCenter  = "freshbox-organicos"
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
     ManagedBy   = "terraform"
   }
 
@@ -40,12 +49,19 @@ module "security" {
   vpc_id       = module.networking.vpc_id
   vpc_cidr     = var.vpc_cidr
   common_tags  = local.common_tags
+<<<<<<< HEAD
 
   observability_allowed_cidr = var.observability_allowed_cidr
 }
 
 # ----------------------------------------------------------
 # ECR: 6 repositorios (frontend + 4 microservicios backend + simulator EP2)
+=======
+}
+
+# ----------------------------------------------------------
+# ECR: 5 repositorios (frontend + 4 microservicios backend)
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # ----------------------------------------------------------
 module "ecr" {
   source       = "../../modules/ecr"
@@ -109,6 +125,7 @@ module "compute" {
 }
 
 # ----------------------------------------------------------
+<<<<<<< HEAD
 # EP2 - Observabilidad: Prometheus + Grafana + simulador (EC2 publica)
 # ----------------------------------------------------------
 module "observability" {
@@ -129,6 +146,8 @@ module "observability" {
 }
 
 # ----------------------------------------------------------
+=======
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # AWS Backup — respaldo diario de la EC2 MySQL
 # ----------------------------------------------------------
 module "backup" {

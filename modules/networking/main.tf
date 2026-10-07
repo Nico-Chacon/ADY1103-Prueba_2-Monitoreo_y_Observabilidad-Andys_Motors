@@ -1,6 +1,10 @@
 # ============================================================
 # Networking — VPC Multi-AZ de 3 capas (Web / App / Data)
+<<<<<<< HEAD
 # Proyecto: andysmotors
+=======
+# Proyecto: chacon-freshbox — EP1 ARY1102
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # ============================================================
 
 data "aws_availability_zones" "available" {

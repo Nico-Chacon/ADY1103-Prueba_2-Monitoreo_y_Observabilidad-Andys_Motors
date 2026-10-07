@@ -4,7 +4,11 @@ variable "project_name" {
 }
 
 variable "vpc_cidr" {
+<<<<<<< HEAD
   description = "CIDR de la VPC (segun caso AndysMotors: /22)"
+=======
+  description = "CIDR de la VPC (segun caso FreshBox: /22)"
+>>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   type        = string
 }
 
