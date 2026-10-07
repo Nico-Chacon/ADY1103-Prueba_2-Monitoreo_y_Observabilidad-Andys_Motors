@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andys Motors - Autos nuevos y usados</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>&#x1F697;</text></svg>">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <span class="logo">Andys<b>Motors</b></span>
+        <div>
+            <a href="#autos">Autos</a>
+            <a href="#visita">Agendar visita</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Andys Motors</h1>
+        <p>Autos nuevos y usados. Revisa el stock, agenda tu visita y te atendemos en la sucursal.</p>
+        <a class="boton" href="#autos">Ver autos</a>
+    </header>
+
+    <main>
+        <section id="autos">
+            <h2>Nuestros autos</h2>
+            <div class="filtros">
+                <input type="text" id="f-q" placeholder="Buscar marca o modelo" oninput="cargarVehiculos()">
+                <select id="f-tipo" onchange="cargarVehiculos()">
+                    <option value="">Nuevos y usados</option>
+                    <option value="nuevo">Nuevos</option>
+                    <option value="usado">Usados</option>
+                </select>
+            </div>
+            <p id="resumen" class="ayuda"></p>
+            <div id="vehiculos-grid" class="grid"></div>
+        </section>
+
+        <section id="visita">
+            <h2>Agendar visita</h2>
+            <p class="ayuda">Atendemos de 09:00 a 19:00 hrs. <strong id="auto-elegido">Elige un auto de la lista.</strong></p>
+            <form onsubmit="agendarVisita(event)">
+                <input type="hidden" id="v-vehiculo">
+                <input type="text" id="v-nombre" placeholder="Nombre" required>
+                <input type="email" id="v-email" placeholder="Email" required>
+                <input type="tel" id="v-telefono" placeholder="Telefono" required>
+                <input type="datetime-local" id="v-fecha" step="1800" required>
+                <button type="submit" id="btn-agendar" disabled>Agendar</button>
+            </form>
+            <p id="msg-visita" class="mensaje"></p>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p class="ayuda">Dejanos tus datos y un ejecutivo te llamara.</p>
+            <form onsubmit="solicitarContacto(event)">
+                <input type="text" id="c-nombre" placeholder="Nombre" required>
+                <input type="email" id="c-email" placeholder="Email" required>
+                <input type="tel" id="c-telefono" placeholder="Telefono" required>
+                <textarea id="c-mensaje" rows="3" placeholder="Mensaje"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <p id="msg-contacto" class="mensaje"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Andys Motors</strong> &middot; Autos nuevos y usados</p>
+        <p>Sucursales: Santiago Centro &middot; Providencia &middot; Las Condes &middot; Maip&uacute;</p>
+        <p>Lunes a s&aacute;bado de 09:00 a 19:00</p>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>

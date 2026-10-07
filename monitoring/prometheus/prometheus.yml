@@ -1,0 +1,69 @@
+# ============================================================
+# prometheus.yml - AndysMotors (EP2 ADY1103 Monitoreo y Observabilidad)
+# Servidor Prometheus en contenedor Docker (EC2 de observabilidad).
+# Este es el archivo ORIGINAL que se monta en el contenedor
+# (/etc/prometheus/prometheus.yml) y el que se entrega como adjunto.
+# Los nombres "prometheus", "simulator" y "grafana" son nombres de
+# servicio de docker-compose (resolucion DNS interna de la red).
+# ============================================================
+
+global:
+  scrape_interval: 15s       # frecuencia de recoleccion de metricas
+  evaluation_interval: 15s   # frecuencia de evaluacion de reglas
+  external_labels:
+    proyecto: andysmotors
+    ambiente: dev
+
+scrape_configs:
+  # ---- 1) Prometheus se monitorea a si mismo ----
+  - job_name: prometheus
+    static_configs:
+      - targets: ['prometheus:9090']
+
+  # ---- 2) TARGET PRINCIPAL EP2: script simulador del proceso transaccional core ----
+  # El contenedor "simulator" ejecuta el script Python del docente y expone /metrics.
+  # Si el script usa otro puerto, cambiarlo aqui y en monitoring/simulator/Dockerfile.
+  - job_name: simulador-andysmotors
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['simulator:8000']
+        labels:
+          sistema: simulador-transaccional
+
+  # ---- 3) Microservicios reales del sitio web (EC2 App, ASG, subredes privadas) ----
+  # Descubrimiento automatico de las instancias del ASG via API de EC2
+  # (usa el rol LabInstanceProfile de la instancia). Un job por microservicio/puerto.
+  - job_name: app-get-vehicles
+    ec2_sd_configs:
+      - &ec2_sd_app
+        region: us-east-1
+        port: 3001
+        refresh_interval: 60s
+        filters:
+          - name: tag:Name
+            values: ['andysmotors-app-instance']
+          - name: instance-state-name
+            values: ['running']
+    relabel_configs: &relabel_app
+      - source_labels: [__meta_ec2_availability_zone]
+        target_label: az
+      - source_labels: [__meta_ec2_instance_id]
+        target_label: instancia
+
+  - job_name: app-create-visit
+    ec2_sd_configs:
+      - <<: *ec2_sd_app
+        port: 3002
+    relabel_configs: *relabel_app
+
+  - job_name: app-create-contact
+    ec2_sd_configs:
+      - <<: *ec2_sd_app
+        port: 3003
+    relabel_configs: *relabel_app
+
+  - job_name: app-manage-visits
+    ec2_sd_configs:
+      - <<: *ec2_sd_app
+        port: 3004
+    relabel_configs: *relabel_app
