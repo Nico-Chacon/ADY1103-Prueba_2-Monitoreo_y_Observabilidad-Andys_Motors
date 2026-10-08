@@ -20,7 +20,7 @@ usermod -a -G docker ssm-user
 
 # Plugin docker compose v2
 mkdir -p /usr/local/lib/docker/cli-plugins
-curl -SL "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-$(uname -m)" \
+curl -SL "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-linux-$(uname -m)" \
   -o /usr/local/lib/docker/cli-plugins/docker-compose
 chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
@@ -61,8 +61,6 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus-data:/prometheus
     restart: always
-    depends_on:
-      - simulator
 
   grafana:
     image: grafana/grafana:latest
@@ -92,8 +90,16 @@ COMPOSEEOF
 
 chown -R ec2-user:ec2-user /home/ec2-user/observability
 
-docker compose pull || exit 1
-docker compose up -d || exit 1
+# Prometheus y Grafana primero: no dependen de ECR ni de permisos extra de AWS,
+# asi el monitoreo queda arriba aunque el simulador (imagen en ECR) falle.
+docker compose up -d prometheus grafana || exit 1
+
+# El simulador viene de ECR: se reintenta y, si no esta disponible, no bloquea el stack.
+for i in 1 2 3 4 5; do
+  docker compose up -d simulator && break
+  echo "simulador no disponible aun (intento $i), reintentando en 30 s"
+  sleep 30
+done
 docker ps -a
 
 echo "andysmotors OBSERVABILIDAD setup completado (prometheus + grafana + simulator)"
