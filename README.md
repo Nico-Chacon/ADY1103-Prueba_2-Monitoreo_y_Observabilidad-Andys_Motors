@@ -14,7 +14,7 @@ Prometheus + Grafana en contenedores, alimentados por el script simulador del do
 
 ![Diagrama](media/wip.gif)
 
-Diagrama in progress
+Diagrama in progress (No creo q haga el diagrama lol)
 
 
 ## El sitio web (qué hace y qué NO hace)
