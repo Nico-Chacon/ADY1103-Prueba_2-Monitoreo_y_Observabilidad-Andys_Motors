@@ -6,15 +6,16 @@ Infraestructura en AWS (Terraform + GitHub Actions) del sitio público de
 observabilidad open source de la **EP2 (ADY1103 Monitoreo y Observabilidad)**:
 Prometheus + Grafana en contenedores, alimentados por el script simulador del docente.
 
+
 ## Este repositorio parte de una base propia previa: 
 
 - [Examen Final de Cloud (Base OG)](https://github.com/Nico-Chacon/ARY1101-EXAMEN-Cloud)
 - [Prueba 1 Cloud - Freshbox App](https://github.com/Nico-Chacon/ARY1102-ARQUITECTURA_CLOUD-PRUEBA1.git)
 
-## Diagrama de la infraestructura
 ![Diagrama](media/wip.gif)
 
-Diagrama in progress (No creo q lo haga lol)
+Diagrama in progress
+
 
 ## El sitio web (qué hace y qué NO hace)
 
@@ -91,7 +92,7 @@ EC2 Observabilidad (subred pública, Elastic IP)
 ## Despliegue con GitHub Actions
 
 1. Crear **una vez** el bucket del estado: `aws s3api create-bucket --bucket andysmotors-tfstate --region us-east-1`
-   (y el Key Pair `andysmotors-key`, o cambiar `key_name` en `variables.tf`).
+   (y un Key Pair llamado `key` en EC2 → us-east-1; el archivo local es `key.pem`).
 2. Secrets del repositorio: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`
    (se renuevan en cada sesión del Learner Lab), `EMAIL_SNS`, `DB_ROOT_PASSWORD`, `DB_PASSWORD`,
    `OWNER_NAME`, `BACKUP_IAM_ROLE_ARN` y **`GRAFANA_ADMIN_PASSWORD`** (nuevo; alfanumérica, mín. 8 caracteres).

@@ -1,11 +1,7 @@
 # ============================================================
 # Compute - Capa 2 App: EC2 (t4g.small) + Docker en subredes
 # PRIVADAS, detras del ALB, con Auto Scaling Group Multi-AZ
-<<<<<<< HEAD
 # (min 2 / max 4, segun tabla 2.3).
-=======
-# (min 2 / max 4, segun tabla 2.3 del enunciado EP1).
->>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # ============================================================
 
 data "aws_ami" "al2023_arm" {
@@ -55,17 +51,10 @@ resource "aws_launch_template" "app" {
     db_password             = var.db_password
     db_name                 = var.db_name
     frontend_image          = "${var.ecr_repo_urls["frontend"]}:latest"
-<<<<<<< HEAD
     get_vehicles_image      = "${var.ecr_repo_urls["get-vehicles"]}:latest"
     create_visit_image    = "${var.ecr_repo_urls["create-visit"]}:latest"
     create_contact_image    = "${var.ecr_repo_urls["create-contact"]}:latest"
     manage_visits_image    = "${var.ecr_repo_urls["manage-visits"]}:latest"
-=======
-    get_products_image      = "${var.ecr_repo_urls["get-products"]}:latest"
-    create_product_image    = "${var.ecr_repo_urls["create-product"]}:latest"
-    update_product_image    = "${var.ecr_repo_urls["update-product"]}:latest"
-    delete_product_image    = "${var.ecr_repo_urls["delete-product"]}:latest"
->>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   }))
 
   metadata_options {

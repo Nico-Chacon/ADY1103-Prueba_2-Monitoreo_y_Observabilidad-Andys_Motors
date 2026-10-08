@@ -1,9 +1,5 @@
 # ============================================================
-<<<<<<< HEAD
 # CloudTrail - Auditoria de eventos AWS - andysmotors
-=======
-# CloudTrail - Auditoria de eventos AWS - chacon-freshbox
->>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 # ============================================================
 
 resource "aws_s3_bucket" "cloudtrail" {

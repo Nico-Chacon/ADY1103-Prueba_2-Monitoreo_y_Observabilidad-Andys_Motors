@@ -1,9 +1,5 @@
 output "alb_dns_name" {
-<<<<<<< HEAD
   description = "DNS del ALB - pegar en el navegador para ver la app AndysMotors"
-=======
-  description = "DNS del ALB - pegar en el navegador para ver la app FreshBox"
->>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   value       = module.loadbalancer.alb_dns_name
 }
 
@@ -25,18 +21,13 @@ output "sns_topic_arn" {
 }
 
 output "ecr_repo_urls" {
-<<<<<<< HEAD
   description = "URLs de los 6 repositorios ECR (para docker push)"
-=======
-  description = "URLs de los 5 repositorios ECR (para docker push)"
->>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
   value       = module.ecr.repo_urls
 }
 
 output "account_id" {
   value = data.aws_caller_identity.current.account_id
 }
-<<<<<<< HEAD
 
 output "prometheus_url" {
   description = "EP2 - Interfaz de Prometheus"
@@ -47,5 +38,3 @@ output "grafana_url" {
   description = "EP2 - Interfaz de Grafana (usuario: admin)"
   value       = module.observability.grafana_url
 }
-=======
->>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024

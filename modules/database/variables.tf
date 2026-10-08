@@ -50,15 +50,9 @@ variable "db_password" {
 }
 
 variable "db_name" {
-<<<<<<< HEAD
   description = "Nombre de la base de datos (debe coincidir con init.sql: andysmotors)"
   type        = string
   default     = "andysmotors"
-=======
-  description = "Nombre de la base de datos (debe coincidir con init.sql: freshbox)"
-  type        = string
-  default     = "freshbox"
->>>>>>> 7c0071f9c8f6cd60faeeff7d71a3c4f1c7901024
 }
 
 variable "common_tags" {
